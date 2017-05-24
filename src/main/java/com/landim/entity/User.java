@@ -24,6 +24,10 @@ public class User implements Serializable {
 
     public User() {}
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public String getName() {
         return name;
     }

@@ -3,14 +3,13 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.landim.entity.Driver" table="driver">
+    <class name="com.landim.entity.City" table="city">
         <meta attribute="class-description">
-            This class contains the driver details.
+            This class contains the city details.
         </meta>
-        <id name="driverID" type="int" column="DRIVER_ID">
+        <id name="cityID" type="int" column="CITY_ID">
             <generator class="native"/>
         </id>
-        <property name="driverName" column="DRIVER_NAME" type="string"/>
-        <property name="phone" column="PHONE" type="string"/>
+        <property name="cityName" column="CITY_NAME" type="string"/>
     </class>
 </hibernate-mapping>

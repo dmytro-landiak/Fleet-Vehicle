@@ -20,6 +20,10 @@ public class Driver implements Serializable {
 
     public Driver() {}
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public String getDriverName() {
         return driverName;
     }
