@@ -16,11 +16,15 @@
         <mapping resource="com/landim/Driver.hbm.xml"></mapping>
         <mapping resource="com/landim/Bus.hbm.xml"></mapping>
         <mapping resource="com/landim/City.hbm.xml"></mapping>
+        <mapping resource="com/landim/Route.hbm.xml"></mapping>
+        <mapping resource="com/landim/Trip.hbm.xml"></mapping>
 
         <mapping class="com.landim.entity.User"></mapping>
         <mapping class="com.landim.entity.Driver"></mapping>
         <mapping class="com.landim.entity.Bus"></mapping>
         <mapping class="com.landim.entity.City"></mapping>
+        <mapping class="com.landim.entity.Route"></mapping>
+        <mapping class="com.landim.entity.Trip"></mapping>
 
     </session-factory>
 </hibernate-configuration>

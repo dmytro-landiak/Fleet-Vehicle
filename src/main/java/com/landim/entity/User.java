@@ -24,6 +24,28 @@ public class User implements Serializable {
 
     public User() {}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (!getUserID().equals(user.getUserID())) return false;
+        if (getName() != null ? !getName().equals(user.getName()) : user.getName() != null) return false;
+        if (!geteMail().equals(user.geteMail())) return false;
+        return getPassword().equals(user.getPassword());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getUserID().hashCode();
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + geteMail().hashCode();
+        result = 31 * result + getPassword().hashCode();
+        return result;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }

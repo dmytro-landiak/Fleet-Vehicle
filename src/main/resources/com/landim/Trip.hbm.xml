@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.landim.entity.Trip" table="trip">
+        <meta attribute="class-description">
+            This class contains the trip details.
+        </meta>
+        <id name="tripID" type="int" column="TRIP_ID">
+            <generator class="native"/>
+        </id>
+        <property name="day" column="DAY" type="string"/>
+        <property name="time" column="TIME" type="string"/>
+        <property name="passengCount" column="PASSENG_COUNT" type="int"/>
+    </class>
+</hibernate-mapping>

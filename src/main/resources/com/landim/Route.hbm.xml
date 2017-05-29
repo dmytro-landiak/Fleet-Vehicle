@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.landim.entity.Route" table="route">
+        <meta attribute="class-description">
+            This class contains the route details.
+        </meta>
+        <id name="routeID" type="int" column="ROUT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="firstCityID" column="CITY_ID_1" type="int"/>
+        <property name="secondCityID" column="CITY_ID_2" type="int"/>
+    </class>
+</hibernate-mapping>
