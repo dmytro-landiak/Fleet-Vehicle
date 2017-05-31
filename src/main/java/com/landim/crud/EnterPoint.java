@@ -19,11 +19,10 @@ public class EnterPoint {
             throw new ExceptionInInitializerError(ex);
         }
         CrudUser users = new CrudUser();
+        CrudCity cities = new CrudCity();
 
-        //users.addUser("Tom", "tom@gmail.com", "0000");
+        cities.updateCity(session, 3);
 
-        users.updateUser(session, 76);
-        users.listUser();
         tx.commit();
         session.close();
     }

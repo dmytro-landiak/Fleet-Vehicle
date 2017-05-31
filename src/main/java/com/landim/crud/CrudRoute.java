@@ -3,16 +3,14 @@ package com.landim.crud;
 import com.landim.entity.User;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-
 import java.util.Iterator;
 import java.util.List;
-
 import static java.lang.System.*;
 
 /**
  * Created by n0fea on 29.05.2017.
  */
-public class CrudUser {
+public class CrudRoute {
     private static SessionFactory factory;
 
     static {
@@ -36,6 +34,7 @@ public class CrudUser {
         }
         return userID;
     }
+    /* Method to  READ all the employees */
     public void listUser( ){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -57,6 +56,7 @@ public class CrudUser {
             session.close();
         }
     }
+
     public void updateUser (Session session, Integer id_user){
         session = factory.openSession();
         Transaction tx = null;
@@ -79,6 +79,8 @@ public class CrudUser {
         }
 
     }
+
+    /* Method to DELETE an employee from the records */
     public void deleteUser(Integer userID){
         Session session = factory.openSession();
         Transaction tx = null;
