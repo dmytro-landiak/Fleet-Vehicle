@@ -1,21 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
 
 package com.landim.tests;
 
@@ -27,39 +9,22 @@ import com.landim.openforecast.Observation;
 import com.landim.openforecast.models.SimpleExponentialSmoothingModel;
 
 
-/**
- * Tests the implementation of the Simple Exponential Smoothing forecasting
- * model.
- * @author Steven R. Gould
- * @since 0.4
- */
+
 public class SimpleExponentialSmoothingTest extends OpenForecastTestCase
 {
-    /**
-     * The amount of error in the forecast values where the forecast is
-     * considered "correct" by the test.
-     */
+
     private static double TOLERANCE = 0.005;
     
-    /**
-     * The amount of error/tolerance in the Mean Squared Error where the
-     * forecast is still considered "correct" by the test.
-     */
+
     private static double MSE_TOLERANCE = 0.1;
     
-    /**
-     * Constructor required by the JUnit framework.
-     */
+
     public SimpleExponentialSmoothingTest( String name )
     {
         super(name);
     }
     
-    /**
-     * A simple exponential smoothing test where the observed data is
-     * constant. This should result in the same constant forecast for
-     * any value of the smoothing constant.
-     */
+
     public void testConstantSimpleExponentialSmoothing()
     {
         final int NUMBER_OF_OBSERVATIONS = 25;
@@ -107,13 +72,7 @@ public class SimpleExponentialSmoothingTest extends OpenForecastTestCase
             }
     }
     
-    /**
-     * A somewhat more realistic test where the results are known (and were
-     * calculated independently of the model). Validates that the
-     * SimpleExponentialSmoothingModel returns the expected set of results
-     * for the given inputs.
-     * @see <a href="http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc431.htm">Engineering Statistics Handbook, 6.4.3.1 Single Exponential Smoothing</a>
-     */
+
     public void testSimpleExponentialSmoothing()
     {
         DataSet observedData = new DataSet();
@@ -160,16 +119,7 @@ public class SimpleExponentialSmoothingTest extends OpenForecastTestCase
         checkResults( results, expectedResult, TOLERANCE );
     }
     
-    /**
-     * An examples taken from "Business Statistics", 4th Edition by Daniel
-     * and Terrell, page 605. This examples tests the exponential smoothing
-     * formulation proposed by Roberts.
-     *
-     * <quote>Example 13.5.1. The sales of musical instruments by a local
-     * music store for the past 10 months are as follows: 74, 69, 80, 91,
-     * 76, 83, 79, 87, 89, and 92.</quote>
-     * @see net.sourceforge.openforecast.models.SimpleExponentialSmoothingModel
-     */
+
     public void testMusicStoreExample()
     {
         DataSet observedData = new DataSet();

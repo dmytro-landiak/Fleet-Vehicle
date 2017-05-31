@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.openforecast.input;
 
 
@@ -28,57 +9,6 @@ import com.landim.openforecast.DataPoint;
 import com.landim.openforecast.DataSet;
 import com.landim.openforecast.Observation;
 
-/**
- * Defines a Builder that can be used to construct a DataSet from a ResultSet.
- * This class makes for a quick and easy "import" of data from a JDBC data
- * source such as an Oracle database.
- *
- * <p><strong>WARNING: This class has not been tested. It has been made
- * available as a starting point for anyone interested in implementing this
- * kind of Builder. It <em>should</em> work fine but, like I said, has not
- * been tested.</strong> If you use this class and fine it works, as is, let
- * me know (and perhaps I can remove this message). Alternatively, if you
- * find any changes are necessary, please submit them for inclusion in the
- * project.
- *
- * <p>Each record in the result set is assumed to define one data point. The
- * last value on each row is assumed to represent the dependent variable. For
- * examples, if the independent variables are represented by x1, x2, x3 and so
- * on, and the dependent variable is represented by y, then a row should be
- * of the form:
- *
- * <pre>
- *  x1, x2, ..., xi, y
- * </pre>
- *
- * <p>For examples, the following represents data points (1,3), (2,5), (3,6),
- * and (4,7):
- *
- * <pre>
- *  1, 3
- *  2, 5
- *  3, 6
- *  4, 7
- * </pre>
- *
- * <p>where the values 3, 5, 6 and 7 are the observed values of the dependent
- * variable corresponding to the associated values of the independent variables
- * with the values 1, 2, 3, and 4 respectively. The independent variables will
- * be given the column names as defined by the query.
- *
- * <p>For examples, consider the following query:
- *
- * <pre>
- *  SELECT period, sales_revenue FROM sales_summary
- * </pre>
- *
- * This would create a series of data points with the single independent
- * variable, <code>period</code>. The <code>sales_revenue</code> column is
- * assumed to represent the dependent variable (for which we don't currently
- * use the name).
- * @author Steven R. Gould
- * @since 0.4
- */
 public class ResultSetBuilder extends AbstractBuilder
 {
      /**

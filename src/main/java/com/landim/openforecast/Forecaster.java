@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.openforecast;
 
 
@@ -30,19 +11,6 @@ import com.landim.openforecast.models.SimpleExponentialSmoothingModel;
 import com.landim.openforecast.models.DoubleExponentialSmoothingModel;
 import com.landim.openforecast.models.TripleExponentialSmoothingModel;
 
-
-
-/**
- * The Forecaster class is a factory class that obtains the best
- * ForecastingModel for the given data set. The interpretation of the "best"
- * forecasting model can be user selected (bias, MAD, MAPE, MSE, SAE or a
- * blend of these), or left up to the Forecaster. If the interpretation is left
- * up to the Forecaster class then it will evaluate a combination of these other
- * measures and comes up with somewhat of a concensus opinion as the to best
- * model. For more details on the different options available, see
- * {@link com.landim.openforecast.EvaluationCriteria}.
- * @author Steven R. Gould
- */
 public class Forecaster
 {
     /**

@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.tests;
 
 
@@ -33,19 +14,12 @@ import com.landim.openforecast.Observation;
 import com.landim.openforecast.output.TimeSeriesOutputter;
 
 
-/**
- * Implements tests of the TimeSeriesOutputter class.
- */
 public class TimeSeriesOutputterTest extends OpenForecastTestCase
 {
     // Constants used to determine size of test
     private double TOLERANCE = 0.000001;
     
-    /**
-     * Tests the correct output of a DataSet to a TimeSeries by outputting it,
-     * then iterating through TimeSeries object checking the correct values
-     * were stored/output.
-     */
+
     public void testOutput()
         throws ClassNotFoundException, NoSuchMethodException,
         InstantiationException, IllegalAccessException,
@@ -61,9 +35,6 @@ public class TimeSeriesOutputterTest extends OpenForecastTestCase
         // We'll set up periods starting from today
         RegularTimePeriod period = new Day();
 
-        // Create a test DataSet for output
-        //  - note that only one independent variable (the time variable)
-        //    will be output. This is expected.
         DataSet dataSet = new DataSet();
         dataSet.setTimeVariable( TIME_VARIABLE );
         for ( int d=0; d<NUMBER_OF_TIME_PERIODS; d++ )

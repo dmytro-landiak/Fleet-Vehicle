@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.openforecast;
 
 
@@ -30,29 +11,6 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 
-/**
- * Represents a collection of data points. Data points are either observations
- * of past data (including both the values of the independent variables and the
- * observed value of the dependent variable), or forecasts or estimates of the
- * dependent variable (for a given set of independent variable values).
- *
- * <p>Generally when trying to forecast future values you'll use two data sets.
- * The first data set contains all of the observations, or historical data.
- * This data set is used to help initialize the selected forecasting model,
- * the details of which depend on the specific forecasting model. A second
- * data set is then created and initialized with data points describing the
- * values of the independent variables that are to be used to predict or
- * forecast values of the dependent variable.
- *
- * <p>When defining any data set it is important to provide as much information
- * as possible about the data. While on the surface it may seem trivial, the
- * more information you can provide about a data set (such as whether it is a
- * time-based series, the name of the independent variable representing time,
- * the number of data points/periods in a year), the better the forecasting
- * model will be able to model the data. This is because some models need this
- * type of data to even be applicable.
- * @author Steven R. Gould
- */
 public class DataSet extends AbstractCollection<DataPoint>
 {
     /**

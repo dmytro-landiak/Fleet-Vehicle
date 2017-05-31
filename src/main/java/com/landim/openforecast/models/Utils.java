@@ -1,34 +1,8 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.openforecast.models;
 
 import java.util.ArrayList;
 
 
-/**
- * This class implements a variety of helper methods that typically help out
- * with the computational components of the models. These static methods are
- * not really suitable for general purpose use, and are therefore not made
- * public.
- * @author Steven R. Gould
- */
 final class Utils
 {
     /**
@@ -101,34 +75,6 @@ final class Utils
         return x;
     }
 
-    /**
-     * Calculates and returns the seasonal indices for the given set of
-     * observations and the given seasonal cycle. To determine any seasonality
-     * at least 2 full seasons of data are required. If the seasonal cycle is
-     * say, 12 months, then at least 2 years of data is required - more is
-     * preferred and recommended if available. If the "seasonal cycle" is say,
-     * 7 days then at least 2 weeks of data is required. Again, more is both
-     * recommended and preferred for better - more reliable - results.
-     *
-     * For more information on the detailed approach implemented here, refer to
-     * "Business Statistics" (4th Ed.) by Daniel and Terrell
-     * (ISBN 0-395-35651-2), section 13.7 "Measuring Seasonal Variation" (pp.
-     * 615-621).
-     * @param observations the observed values of the dependent variable over
-     * past seasons.
-     * @param seasonalCycle the number of observations in a "season". Note that
-     * this could be 12 months in a year, 4 quarters in a year, but also
-     * something like 7 days in a week (where the "seasonality" of interest is
-     * weekly by day).
-     * @throws IllegalArgumentException if there are insufficient observations
-     * available to determine seasonal indices. Basically the number of
-     * observations should be at least twice the number of observations in a
-     * seasonal cycle. For examples, if the observations are monthly and the
-     * seasonal cycle is 12 months, then there should be at least 24
-     * observations in order to determine the seasonal indices. More is
-     * recommended. In this case, 4-5 years or more of observations (depending
-     * on the data) would be a good starting point.
-     */
     static double[] calculateSeasonalIndices( double observation[],
                                               int seasonalCycle )
     {

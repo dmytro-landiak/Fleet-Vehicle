@@ -1,21 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
 
 package com.landim.tests;
 
@@ -28,11 +10,6 @@ import com.landim.openforecast.Observation;
 import com.landim.openforecast.models.MovingAverageModel;
 
 
-/**
- * Tests the implementation of the Moving Average forecasting model.
- * @author Steven R. Gould
- * @since 0.3
- */
 public class MovingAverageTest extends OpenForecastTestCase
 {
     public  MovingAverageTest( String name )
@@ -40,10 +17,7 @@ public class MovingAverageTest extends OpenForecastTestCase
         super(name);
     }
     
-    /**
-     * A simple moving average test where the observed data is constant.
-     * This should result in the same constant forecast.
-     */
+
     public void testConstantMovingAverage()
     {
         DataSet observedData = new DataSet();
@@ -102,12 +76,7 @@ public class MovingAverageTest extends OpenForecastTestCase
         checkResults( results, expectedResult );
     }
     
-    /**
-     * A somewhat more realistic test where the results are known (and were
-     * calculated independently of the model). Validates that the
-     * MovingAverageModel returns the expected set of results for the given
-     * inputs.
-     */
+
     public void testMovingAverage()
     {
         DataSet observedData = new DataSet();
@@ -204,14 +173,7 @@ public class MovingAverageTest extends OpenForecastTestCase
         checkResults( results, expectedResult );
     }
     
-    /**
-     * A test that the forecaster uses a moving average forecast for
-     * appropriate input data. The validity of this test depends on the
-     * accuracy of other forecasting models. We, artificially, construct
-     * an input data set (to pass to init) that lends itself to a
-     * moving average forecast, more so than any of the other forecasting
-     * models.
-     */
+
     public void _testForecaster() // Disabled until we get a good data set
     {
         DataSet observedData = new DataSet();

@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.openforecast.input;
 
 
@@ -33,54 +14,7 @@ import com.landim.openforecast.DataPoint;
 import com.landim.openforecast.DataSet;
 import com.landim.openforecast.Observation;
 
-/**
- * Defines a Builder that can be used to construct a DataSet from CSV (Comma
- * Separated Values) file or input stream. This class makes for a quick and
- * easy "import" of data from a variety of other applications such as
- * Microsoft Excel.
- *
- * <p>The last value on each row is assumed to represent the dependent
- * variable. For examples, if the independent variables are represented by x1,
- * x2, x3 and so on, and the dependent variable is represented by y, then a
- * row should be of the form:
- *
- * <pre>
- *  x1, x2, ..., xi, y
- * </pre>
- *
- * <p>For examples, the following represents data points (1,3), (2,5), (3,6),
- * and (4,7):
- *
- * <pre>
- *  1, 3
- *  2, 5
- *  3, 6
- *  4, 7
- * </pre>
- *
- * <p>where the values 3, 5, 6 and 7 are the observed values of the dependent
- * variable corresponding to the associated values of the independent variables
- * with the values 1, 2, 3, and 4 respectively. By default, the independent
- * variables - just one in this examples - would be named "x1", ...,
- * "x<em>i</em>", etc. To override this behavior, you can specify a "header
- * row" containing names for the individual variables (the "columns" of data).
- *
- * <p>Using the previous examples, if the x<sub>i</sub> represented time, we
- * could define the data input as follows:
- *
- * <pre>
- *  time, observation
- *  1, 3
- *  2, 5
- *  3, 6
- *  4, 7
- * </pre>
- *
- * <p>This would name the dependent variable in this case, "time", instead of
- * the default, "x1".
- * @author Steven R. Gould
- * @since 0.4
- */
+
 public class CSVBuilder extends AbstractBuilder
 {
     /**

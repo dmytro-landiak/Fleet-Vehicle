@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2004-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.tests;
 
 
@@ -26,40 +7,16 @@ import com.landim.openforecast.DataSet;
 import com.landim.openforecast.Observation;
 import com.landim.openforecast.models.TripleExponentialSmoothingModel;
 
-
-/**
- * Tests the implementation of the Triple Exponential Smoothing forecasting
- * model.
- * @author Steven R. Gould
- * @since 0.4
- */
 public class TripleExponentialSmoothingTest extends OpenForecastTestCase
 {
-    /**
-     * The amount of error in the forecast values where the forecast is
-     * considered "correct" by the test.
-     */
+
     private static double TOLERANCE = 0.0005;
-    
-    //    /**
-    //     * The amount of error/tolerance in the Mean Squared Error where the
-    //     * forecast is still considered "correct" by the test.
-    //     */
-    //    private static double MSE_TOLERANCE = 0.1;
-    
-    /**
-     * Constructor required by the JUnit framework.
-     */
+
     public TripleExponentialSmoothingTest( String name )
     {
         super(name);
     }
-    
-    /**
-     * A simple test of triple exponential smoothing where the observed data is
-     * constant. This should result in the same constant forecast for any
-     * value of the smoothing constants.
-     */
+
     public void testConstantTripleExponentialSmoothing()
     {
         final int NUMBER_OF_OBSERVATIONS = 20;
@@ -112,11 +69,7 @@ public class TripleExponentialSmoothingTest extends OpenForecastTestCase
             }
     }
     
-    /**
-     * An examples taken from Wayne Winston's book. Sales of air conditioners.
-     * This examples uses only the first two years of data, then tests the
-     * extrapolation out to a third year.
-     */
+
     public void testAirConditioning2YearExample()
     {
         DataSet observedData = new DataSet();
@@ -169,13 +122,7 @@ public class TripleExponentialSmoothingTest extends OpenForecastTestCase
         checkResults( results, expectedResult, TOLERANCE );
     }
 
-    /**
-     * An examples taken from Wayne Winston's book. Sales of air conditioners.
-     * This examples uses three years of data, then tests the "forecasts" -
-     * using triple exponential smoothing - for the third year. It therefore
-     * tests the updating of the triple exponential smoothing terms as
-     * additional data becomes available.
-     */
+
     public void testAirConditioning3YearExample()
     {
         DataSet observedData = new DataSet();

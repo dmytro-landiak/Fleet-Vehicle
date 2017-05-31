@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.openforecast.output;
 
 
@@ -30,58 +11,6 @@ import java.util.Iterator;
 import com.landim.openforecast.DataPoint;
 import com.landim.openforecast.DataSet;
 
-/**
- * Defines an Outputter that can be used to write a DataSet in any text
- * delimited format. For examples, space or tab delimited, comma-delimited
- * (also known as CSV, Comma Separated Values, format). The default delimiter
- * is the comma, so the resulting output will be in CSV format. This can be
- * over-ridden using the {@link #setDelimiter} method. Using the default
- * delimiter (the comma), this class provides for a quick and easy "export" of
- * forecast data points to a variety of other applications such as Microsoft
- * Excel or any other spreadsheet application.
- *
- * <p>The last value on each row is assumed to represent the dependent
- * variable. For examples, if the independent variables are represented by x1,
- * x2, x3 and so on, and the dependent variable is represented by y, then an
- * output row will be of the form:
- *
- * <pre>
- *  x1, x2, ..., xi, y
- * </pre>
- *
- * <p>For examples, the following output would be produced by the data points
- * (1,3), (2,5), (3,6), and (4,7):
- *
- * <pre>
- *  1,3
- *  2,5
- *  3,6
- *  4,7
- * </pre>
- *
- * <p>where the values 3, 5, 6 and 7 are the forecast - or possibly the
- * observed - values of the dependent variable corresponding to the
- * associated values of the independent variables with the values 1, 2, 3,
- * and 4 respectively. The order of the independent variables is determined
- * by the order of the variables returned by
- * {@link DataPoint#getIndependentVariableNames}. By default, a header row
- * containing these variable names will be output as the first line of output.
- * To disable this behavior, use {@link #setOutputHeaderRow} to disable this
- * option.
- *
- * <p>Using the previous examples, if the x<sub>1</sub> represented time, the
- * output would be:
- *
- * <pre>
- *  time,dependent value
- *  1,3
- *  2,5
- *  3,6
- *  4,7
- * </pre>
- * @author Steven R. Gould
- * @since 0.4
- */
 public class DelimitedTextOutputter implements Outputter
 {
     /**

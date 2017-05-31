@@ -1,22 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.tests;
 
 import com.landim.openforecast.Forecaster;
@@ -29,10 +10,7 @@ import com.landim.openforecast.Observation;
 
 public class BasicTest extends OpenForecastTestCase
 {
-    /**
-     * Tests that two DataPoint objects initialized differently but with the
-     * same data are equal.
-     */
+
     public void testDataPoint()
     {
         DataPoint dp1 = new Observation( 1.0 );
@@ -45,11 +23,7 @@ public class BasicTest extends OpenForecastTestCase
         
         assertTrue( dp1.equals( dp2 ) );
     }
-    
-    /**
-     * Tests that an IllegalArgumentException is thrown if an attempt is made
-     * to retrieve the value of an unknown independent variable.
-     */
+
     public void testUnknownVariableInObservation()
     {
         Observation observation = new Observation( 5.0 );
@@ -65,14 +39,7 @@ public class BasicTest extends OpenForecastTestCase
                 // Expected result!
             }
     }
-    
-    /**
-     * Creates a simple data set where the dependent value is exactly the same
-     * as the independent value, then tests the chosen forecast model on five
-     * further values in the series. A regression model should give accurate
-     * results for this series, whereas a moving average would always lag the
-     * value (so not be as appropriate).
-     */
+
     public void testForecast()
     {
         DataSet observedData = new DataSet();

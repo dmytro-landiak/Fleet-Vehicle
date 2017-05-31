@@ -1,21 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
 
 package com.landim.tests;
 
@@ -28,28 +10,13 @@ import com.landim.openforecast.DataSet;
 import com.landim.openforecast.Observation;
 import com.landim.openforecast.models.MultipleLinearRegressionModel;
 
-
-/**
- * Tests the Mutiple Variable Linear Regression model. This contains two test
- * cases - one to invoke and test the MultipleLinearRegressionModel directly;
- * the second to invoke the Forecaster and ensure that it uses the
- * MultipleLinearRegressionModel, and again gives the expected forecasts.
- */
 public class MultipleLinearRegressionTest extends OpenForecastTestCase
 {
-    /**
-     * Initialized by setUp to contain a sample data set.
-     * @see setUp
-     */
+
     private DataSet observedData;
 
 
-    /**
-     * Initializes the observedData data set with some sample data. Note that
-     * the independent variable <code>x3</code> is a dummy, uncorrelated
-     * variable included to make sure that it gets a zero coefficient in a
-     * multiple linear regression model.
-     */
+
     protected void setUp()
     {
         observedData = new DataSet();
@@ -92,12 +59,7 @@ public class MultipleLinearRegressionTest extends OpenForecastTestCase
         observedData.add( dp );
     }
 
-    /**
-     * Tests the Multiple Linear Regression model directly. Uses the data
-     * set initialized by setUp, where x3 is an independent variable that
-     * does not affect the value of the dependent variable. In other words,
-     * x3 should end up with a zero coefficient.
-     */
+
     public void testMultipleLinearRegression()
     {
         // Obtain a Multiple Linear Regression forecasting model

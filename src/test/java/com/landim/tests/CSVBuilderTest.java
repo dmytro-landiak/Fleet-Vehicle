@@ -1,21 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
 
 package com.landim.tests;
 
@@ -38,13 +20,7 @@ public class CSVBuilderTest extends OpenForecastTestCase
     // Constants used to determine size of test
     private double TOLERANCE = 0.000001;
     
-    /**
-     * Tests the correct initialization of a DataSet from a CSV file where
-     * the input is valid, yet poorly and irregularly formatted. For examples,
-     * the CSVBuilder is supposed to treat as a zero field two commas following
-     * each other. This test will also test naming the columns and the use of
-     * blank lines and comments in the input.
-     */
+
     public void testExtremeCSVBuilder()
         throws FileNotFoundException, IOException
     {
@@ -178,13 +154,7 @@ public class CSVBuilderTest extends OpenForecastTestCase
         // Clean up - remove test file
         testFile.delete();
     }
-    
-    /**
-     * Tests the correct initialization of a DataSet from a CSV file when the
-     * CSVBuilder does not know whether or not there is a header row and the
-     * CSV file contains one. This tests for the correct "auto detection" of
-     * a header row.
-     */
+
     public void testUnknownHeaderWithHeader()
         throws FileNotFoundException, IOException
     {
@@ -258,13 +228,7 @@ public class CSVBuilderTest extends OpenForecastTestCase
         testFile.delete();
     }
     
-    
-    /**
-     * Tests the correct initialization of a DataSet from a CSV file when the
-     * CSVBuilder does not know whether or not there is a header row and the
-     * CSV file contains one. This tests for the correct "auto detection" of
-     * a header row.
-     */
+
     public void testUnknownHeaderWithoutHeader()
         throws FileNotFoundException, IOException
     {

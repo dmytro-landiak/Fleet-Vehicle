@@ -1,21 +1,3 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
 
 package com.landim.tests;
 
@@ -26,9 +8,6 @@ import com.landim.openforecast.DataSet;
 import com.landim.openforecast.Observation;
 
 
-/**
- * Implements a variety of tests of the DataSet class.
- */
 public class DataSetTest extends OpenForecastTestCase
 {
     private static final int SIZE = 10;
@@ -41,13 +20,7 @@ public class DataSetTest extends OpenForecastTestCase
     {
         super(name);
     }
-    
-    /**
-     * Creates four simple DataSet for use by the tests. The first three
-     * DataSets are created to contain the same data (though different
-     * DataPoint objects), whereas the fourth DataSet is the same size but
-     * contains different data as the others.
-     */
+
     public void setUp()
     {
         dataSet1 = new DataSet();
@@ -125,11 +98,7 @@ public class DataSetTest extends OpenForecastTestCase
                 assertTrue( value>-TOLERANCE && value<SIZE+TOLERANCE );
             }
     }
-    
-    /**
-     * Tests the equals method of the DataSet class. Checks that the DataSet
-     * equals method is reflexive, symmetric, transitive, and consistent.
-     */
+
     public void testDataSetEqualsMethod()
     {
         assertTrue("Checking DataSet is reflexive: dataSet1.equals(dataSet1)",
@@ -183,28 +152,7 @@ public class DataSetTest extends OpenForecastTestCase
         assertFalse("Checking for individual DataPoint non-containment",
                     dataSet4.contains(dp));
     }
-    
-    /**
-     * Validates the hash code contract. In the java.lang.Object javadocs, it
-     * states that the general contract is:
-     * <ul>
-     *  <li>Whenever it is invoked on the same object more than once during
-     *  an execution of a Java application, the hashCode method must
-     *  consistently return the same integer, provided no information used in
-     *  equals comparisons on the object is modified. This integer need not
-     *  remain consistent from one execution of an application to another
-     *  execution of the same application.</li>
-     *
-     *  <li>If two objects are equal according to the equals(Object) method,
-     *  then calling the hashCode method on each of the two objects must
-     *  produce the same integer result.</li>
-     *
-     *  <li>It is not required that if two objects are unequal according to
-     *  the equals(Object) method, then calling the hashCode method on each
-     *  of the two objects must produce distinct integer results.</li>
-     * </ul>
-     * <p>This test case tests each of these.
-     */
+
     public void testHashCode()
     {
         assertEquals("Checking hash code function returns consistent value",

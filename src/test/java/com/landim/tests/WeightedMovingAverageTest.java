@@ -1,24 +1,4 @@
-//
-//  OpenForecast - open source, general-purpose forecasting package.
-//  Copyright (C) 2002-2011  Steven R. Gould
-//
-//  This library is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU Lesser General Public
-//  License as published by the Free Software Foundation; either
-//  version 2.1 of the License, or (at your option) any later version.
-//
-//  This library is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-//  Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public
-//  License along with this library; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-
 package com.landim.tests;
-
 
 import com.landim.openforecast.ForecastingModel;
 import com.landim.openforecast.DataPoint;
@@ -26,12 +6,6 @@ import com.landim.openforecast.DataSet;
 import com.landim.openforecast.Observation;
 import com.landim.openforecast.models.WeightedMovingAverageModel;
 
-
-/**
- * Implements a series of tests to test the WeightedMovingAverageModel class.
- * @author Steven R. Gould
- * @since 0.4
- */
 public class WeightedMovingAverageTest extends OpenForecastTestCase
 {
     public WeightedMovingAverageTest( String name )
@@ -39,10 +13,7 @@ public class WeightedMovingAverageTest extends OpenForecastTestCase
         super(name);
     }
     
-    /**
-     * A simple weighted moving average test where the observed data is
-     * constant. This should result in the same constant forecast.
-     */
+
     public void testConstantWeightedMovingAverage()
     {
         DataSet observedData = new DataSet();
@@ -102,14 +73,7 @@ public class WeightedMovingAverageTest extends OpenForecastTestCase
         checkResults( results, expectedResult );
     }
     
-    /**
-     * A somewhat more realistic test where the results are known (and were
-     * calculated independently of the model). Validates that the
-     * WeightedMovingAverageModel returns the expected set of results for the
-     * given inputs. This is still not a great test, since the weights are
-     * all equal - at 0.25 - so it is equivalent to a four period moving
-     * average. Could do with some better test data here.
-     */
+
     public void testWeightedMovingAverage()
     {
         DataSet observedData = new DataSet();
