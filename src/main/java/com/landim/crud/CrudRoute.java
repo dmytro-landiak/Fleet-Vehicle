@@ -1,11 +1,9 @@
 package com.landim.crud;
 
-import com.landim.entity.User;
+import com.landim.entity.Route;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-import java.util.Iterator;
 import java.util.List;
-import static java.lang.System.*;
 
 /**
  * Created by n0fea on 29.05.2017.
@@ -17,14 +15,14 @@ public class CrudRoute {
         factory = new Configuration().configure().buildSessionFactory();
     }
 
-    public Integer addUser(String name, String eMail, String password){
+    public Long addRoute(String routeName){
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer userID = null;
+        Long routeID = null;
         try{
             tx = session.beginTransaction();
-            User user = new User(name, eMail, password);
-            userID = (Integer) session.save(user);
+            Route route = new Route(routeName);
+            routeID = (Long) session.save(route);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -32,69 +30,34 @@ public class CrudRoute {
         }finally {
             session.close();
         }
-        return userID;
+        return routeID;
     }
-    /* Method to  READ all the employees */
-    public void listUser( ){
-        Session session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            List users = session.createQuery("FROM User ").list();
-            for (Iterator iterator =
-                 users.iterator(); iterator.hasNext();){
-                User user = (User) iterator.next();
-                out.print("Name: " + user.getName());
-                out.print("  E-mail: " + user.geteMail());
-                out.println("  password: " + user.getPassword());
-            }
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
+    public void searchRoute(Session session){
+        Query query = session.createQuery("from Route where routeName = ''");
+        List<Route> listRoutes = query.list();
+
+        for (Route aRoute : listRoutes) {
+            System.out.println(aRoute.getRouteName());
         }
     }
+    public void listRoutes(Session session ){
+        Query query = session.createQuery("from Route");
+        List<Route> listRoutes = query.list();
 
-    public void updateUser (Session session, Integer id_user){
-        session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            Query query = session.createQuery("update User set name = :user_name, eMail = :user_eMail, password = :user_password "
-                    + "where userID = :idCode");
-            query.setParameter("idCode", id_user);
-            query.setParameter("user_name", "Mark");
-            query.setParameter("user_eMail", "mark@gmail.com");
-            query.setParameter("user_password", "6789");
-            query.executeUpdate();
-
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
+        for (Route aRoute : listRoutes) {
+            System.out.println(aRoute.getRouteName());
         }
-
     }
-
-    /* Method to DELETE an employee from the records */
-    public void deleteUser(Integer userID){
-        Session session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            User user =
-                    (User)session.get(User.class, userID);
-            session.delete(user);
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
+    public void updateRoute (Session session, long id_route, String routeName){
+        Query query = session.createQuery("update Route set routeName = :route_name "
+                + "where routeID = :idCode");
+        query.setParameter("idCode", id_route);
+        query.setParameter("route_name", routeName);
+        query.executeUpdate();
+    }
+    public void deleteRoute(Session session, long id_route) {
+        Query query = session.createQuery("delete Route where routeID = :idCode");
+        query.setParameter("idCode", id_route);
+        query.executeUpdate();
     }
 }

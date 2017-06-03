@@ -7,7 +7,7 @@
         <meta attribute="class-description">
             This class contains the route details.
         </meta>
-        <id name="routeID" type="long" column="ROUT_ID">
+        <id name="routeID" type="long" column="ROUTE_ID">
             <generator class="native"/>
         </id>
         <property name="routeName" column="ROUTE_NAME" type="string"/>

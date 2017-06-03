@@ -18,10 +18,8 @@ public class EnterPoint {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-        CrudUser users = new CrudUser();
-        CrudCity cities = new CrudCity();
-
-
+        CrudBusType busType = new CrudBusType();
+        busType.deleteBusType(session, 1);
 
         tx.commit();
         session.close();

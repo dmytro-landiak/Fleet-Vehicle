@@ -3,11 +3,7 @@ package com.landim.crud;
 import com.landim.entity.User;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-
-import java.util.Iterator;
 import java.util.List;
-
-import static java.lang.System.*;
 
 /**
  * Created by n0fea on 29.05.2017.
@@ -44,7 +40,7 @@ public class CrudUser {
             System.out.println(aUser.geteMail());
         }
     }
-    public void listUser(Session session ){
+    public void listUsers(Session session ){
         Query query = session.createQuery("from User");
         List<User> listUsers = query.list();
 
@@ -52,14 +48,14 @@ public class CrudUser {
             System.out.println(aUser.getName());
         }
     }
-    public void updateUser (Session session, Integer id_user){
-            Query query = session.createQuery("update User set name = :user_name, eMail = :user_eMail, password = :user_password "
-                    + "where userID = :idCode");
-            query.setParameter("idCode", id_user);
-            query.setParameter("user_name", "Mark");
-            query.setParameter("user_eMail", "mark@gmail.com");
-            query.setParameter("user_password", "6789");
-            query.executeUpdate();
+    public void updateUser (Session session, long id_user){
+        Query query = session.createQuery("update User set name = :user_name, eMail = :user_eMail, password = :user_password "
+                + "where userID = :idCode");
+        query.setParameter("idCode", id_user);
+        query.setParameter("user_name", "Mark");
+        query.setParameter("user_eMail", "mark@gmail.com");
+        query.setParameter("user_password", "6789");
+        query.executeUpdate();
     }
     public void deleteUser(Session session, long id_user) {
         Query query = session.createQuery("delete User where userID = :idCode");
