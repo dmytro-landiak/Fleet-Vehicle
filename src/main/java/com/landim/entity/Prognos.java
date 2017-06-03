@@ -7,44 +7,44 @@ import javax.persistence.*;
  * Created by n0fea on 24.05.2017.
  */
 @Entity
-@Table(name = "TRIP")
-public class Trip implements Serializable {
+@Table(name = "PROGNOS")
+public class Prognos implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private long tripID;
+    private long prognosID;
     private String day;
     private String time;
-    private Integer passengCount;
+    private Integer prognosCount;
     private Route route;
 
-    public Trip(String day, String time, Integer passengCount) {
+    public Prognos(String day, String time, Integer prognosCount) {
         this.day = day;
         this.time = time;
-        this.passengCount = passengCount;
+        this.prognosCount = prognosCount;
     }
 
-    public Trip(String day, String time, Integer passengCount, Route route) {
+    public Prognos(String day, String time, Integer prognosCount, Route route) {
         this.day = day;
         this.time = time;
-        this.passengCount = passengCount;
+        this.prognosCount = prognosCount;
         this.route = route;
     }
 
-    public Trip() {}
+    public Prognos() {}
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
     @Id
-    @Column(name = "TRIP_ID")
+    @Column(name = "PROGNOS_ID")
     @GeneratedValue
-    public long getTripID() {
-        return tripID;
+    public long getPrognosID() {
+        return prognosID;
     }
 
-    public void setTripID(long tripID) {
-        this.tripID = tripID;
+    public void setPrognosID(long prognosID) {
+        this.prognosID = prognosID;
     }
 
     public String getDay() {
@@ -63,12 +63,12 @@ public class Trip implements Serializable {
         this.time = time;
     }
 
-    public Integer getPassengCount() {
-        return passengCount;
+    public Integer getPrognosCount() {
+        return prognosCount;
     }
 
-    public void setPassengCount(Integer passengCount) {
-        this.passengCount = passengCount;
+    public void setPrognosCount(Integer prognosCount) {
+        this.prognosCount = prognosCount;
     }
 
     @ManyToOne

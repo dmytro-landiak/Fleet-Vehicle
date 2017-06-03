@@ -7,10 +7,33 @@
         <meta attribute="class-description">
             This class contains the route details.
         </meta>
-        <id name="routeID" type="int" column="ROUT_ID">
+        <id name="routeID" type="long" column="ROUT_ID">
             <generator class="native"/>
         </id>
-        <property name="firstCityID" column="CITY_ID_1" type="int"/>
-        <property name="secondCityID" column="CITY_ID_2" type="int"/>
+        <property name="routeName" column="ROUTE_NAME" type="string"/>
+
+        <set name="drivers" table="driver"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ROUTE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Driver" />
+        </set>
+
+        <set name="trips" table="trip"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ROUTE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Trip" />
+        </set>
+
+        <set name="prognoses" table="prognos"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ROUTE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Prognos" />
+        </set>
     </class>
 </hibernate-mapping>

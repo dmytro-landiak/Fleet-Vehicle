@@ -21,7 +21,7 @@ public class EnterPoint {
         CrudUser users = new CrudUser();
         CrudCity cities = new CrudCity();
 
-        cities.updateCity(session, 3);
+        
 
         tx.commit();
         session.close();

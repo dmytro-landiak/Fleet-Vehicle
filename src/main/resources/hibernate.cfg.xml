@@ -18,6 +18,10 @@
         <mapping resource="com/landim/City.hbm.xml"></mapping>
         <mapping resource="com/landim/Route.hbm.xml"></mapping>
         <mapping resource="com/landim/Trip.hbm.xml"></mapping>
+        <mapping resource="com/landim/Prognos.hbm.xml"></mapping>
+        <mapping resource="com/landim/BusPark.hbm.xml"></mapping>
+        <mapping resource="com/landim/BusTypes.hbm.xml"></mapping>
+        <mapping resource="com/landim/BusParkBusType.hbm.xml"></mapping>
 
         <mapping class="com.landim.entity.User"></mapping>
         <mapping class="com.landim.entity.Driver"></mapping>
@@ -25,6 +29,10 @@
         <mapping class="com.landim.entity.City"></mapping>
         <mapping class="com.landim.entity.Route"></mapping>
         <mapping class="com.landim.entity.Trip"></mapping>
+        <mapping class="com.landim.entity.Prognos"></mapping>
+        <mapping class="com.landim.entity.BusPark"></mapping>
+        <mapping class="com.landim.entity.BusType"></mapping>
+        <mapping class="com.landim.entity.BusParkBusType"></mapping>
 
     </session-factory>
 </hibernate-configuration>

@@ -19,14 +19,14 @@ public class CrudUser {
         factory = new Configuration().configure().buildSessionFactory();
     }
 
-    public Integer addUser(String name, String eMail, String password){
+    public Long addUser(String name, String eMail, String password){
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer userID = null;
+        Long userID = null;
         try{
             tx = session.beginTransaction();
             User user = new User(name, eMail, password);
-            userID = (Integer) session.save(user);
+            userID = (Long) session.save(user);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -36,32 +36,23 @@ public class CrudUser {
         }
         return userID;
     }
-    public void listUser( ){
-        Session session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            List users = session.createQuery("FROM User ").list();
-            for (Iterator iterator =
-                 users.iterator(); iterator.hasNext();){
-                User user = (User) iterator.next();
-                out.print("Name: " + user.getName());
-                out.print("  E-mail: " + user.geteMail());
-                out.println("  password: " + user.getPassword());
-            }
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
+    public void searchUser(Session session){
+        Query query = session.createQuery("from User where name = 'Vlad'");
+        List<User> listUsers = query.list();
+
+        for (User aUser : listUsers) {
+            System.out.println(aUser.geteMail());
+        }
+    }
+    public void listUser(Session session ){
+        Query query = session.createQuery("from User");
+        List<User> listUsers = query.list();
+
+        for (User aUser : listUsers) {
+            System.out.println(aUser.getName());
         }
     }
     public void updateUser (Session session, Integer id_user){
-        session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
             Query query = session.createQuery("update User set name = :user_name, eMail = :user_eMail, password = :user_password "
                     + "where userID = :idCode");
             query.setParameter("idCode", id_user);
@@ -69,30 +60,10 @@ public class CrudUser {
             query.setParameter("user_eMail", "mark@gmail.com");
             query.setParameter("user_password", "6789");
             query.executeUpdate();
-
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-
     }
-    public void deleteUser(Integer userID){
-        Session session = factory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            User user =
-                    (User)session.get(User.class, userID);
-            session.delete(user);
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
+    public void deleteUser(Session session, long id_user) {
+        Query query = session.createQuery("delete User where userID = :idCode");
+        query.setParameter("idCode", id_user);
+        query.executeUpdate();
     }
 }

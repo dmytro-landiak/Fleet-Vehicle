@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.landim.entity.BusPark" table="buspark">
+        <meta attribute="class-description">
+            This class contains the bus park details.
+        </meta>
+        <id name="busParkID" type="long" column="BUSPARK_ID">
+            <generator class="native"/>
+        </id>
+        <property name="busParkName" column="BUSPARK_NAME" type="string"/>
+
+        <set name="buses" table="bus"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BUSPARK_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Bus" />
+        </set>
+
+        <one-to-one name="city" class="com.landim.entity.City"
+                    constrained="true"></one-to-one>
+
+        <set name="busParkBusTypes" table="buspark_bus_type" lazy="true" access="field" fetch="select" cascade="all">
+            <key>
+                <column name="BUSPARK_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.BusParkBusType"/>
+        </set>
+    </class>
+</hibernate-mapping>

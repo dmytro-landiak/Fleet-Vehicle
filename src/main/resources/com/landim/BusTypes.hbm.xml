@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.landim.entity.BusType" table="bus_type">
+        <meta attribute="class-description">
+            This class contains the bus type details.
+        </meta>
+        <id name="busTypeID" type="long" column="BUSTYPE_ID">
+            <generator class="native"/>
+        </id>
+        <property name="type" column="TYPE" type="string"/>
+        <property name="capacity" column="CAPACITY" type="int"/>
+        <set name="buses" table="bus"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BUSTYPE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Bus" />
+        </set>
+    </class>
+</hibernate-mapping>

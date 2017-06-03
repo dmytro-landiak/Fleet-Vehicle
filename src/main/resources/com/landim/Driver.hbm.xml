@@ -7,10 +7,23 @@
         <meta attribute="class-description">
             This class contains the driver details.
         </meta>
-        <id name="driverID" type="int" column="DRIVER_ID">
+        <id name="driverID" type="long" column="DRIVER_ID">
             <generator class="native"/>
         </id>
         <property name="driverName" column="DRIVER_NAME" type="string"/>
         <property name="phone" column="PHONE" type="string"/>
+
+        <many-to-one name="city" class="com.landim.entity.City" fetch="select">
+            <column name="CITY_ID" not-null="true" />
+        </many-to-one>
+
+        <many-to-one name="bus" class="com.landim.entity.Bus" fetch="select">
+            <column name="BUS_ID" not-null="true" />
+        </many-to-one>
+
+        <many-to-one name="route" class="com.landim.entity.Route" fetch="select">
+            <column name="ROUTE_ID" not-null="true" />
+        </many-to-one>
+
     </class>
 </hibernate-mapping>

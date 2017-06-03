@@ -16,14 +16,14 @@ public class CrudCity {
     static {
         factory = new Configuration().configure().buildSessionFactory();
     }
-    public Integer addCity(String cityName){
+    public Long addCity(String cityName){
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer cityID = null;
+        Long cityID = null;
         try{
             tx = session.beginTransaction();
             City city = new City(cityName);
-            cityID = (Integer) session.save(city);
+            cityID = (Long) session.save(city);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

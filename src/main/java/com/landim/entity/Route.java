@@ -1,21 +1,25 @@
 package com.landim.entity;
 
 import java.io.Serializable;
-
+import java.util.Set;
+import javax.persistence.*;
 /**
  * Created by n0fea on 24.05.2017.
  */
+@Entity
+@Table(name = "ROUTE")
 public class Route implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer routeID;
-    private Integer firstCityID;
-    private Integer secondCityID;
+    private long routeID;
+    private String routeName;
 
+    private Set<Driver> drivers;
+    private Set<Trip> trips;
+    private Set<Prognos> prognoses;
 
-    public Route(Integer firstCityID, Integer secondCityID) {
-        this.firstCityID = firstCityID;
-        this.secondCityID = secondCityID;
+    public Route(String routeName) {
+        this.routeName = routeName;
     }
 
     public Route() {}
@@ -24,27 +28,47 @@ public class Route implements Serializable {
         return serialVersionUID;
     }
 
-    public Integer getRouteID() {
+    @Id
+    @Column(name = "ROUTE_ID")
+    @GeneratedValue
+    public long getRouteID() {
         return routeID;
     }
 
-    public void setRouteID(Integer routeID) {
+    public void setRouteID(long routeID) {
         this.routeID = routeID;
     }
 
-    public Integer getFirstCityID() {
-        return firstCityID;
+    public String getRouteName() {
+        return routeName;
     }
 
-    public void setFirstCityID(Integer firstCityID) {
-        this.firstCityID = firstCityID;
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
     }
 
-    public Integer getSecondCityID() {
-        return secondCityID;
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    public Set<Driver> getDrivers() {
+        return drivers;
+    }
+    public void setDrivers(Set<Driver> drivers) {
+        this.drivers = drivers;
     }
 
-    public void setSecondCityID(Integer secondCityID) {
-        this.secondCityID = secondCityID;
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    public Set<Trip> getTrips() {
+        return trips;
     }
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
+    }
+
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    public Set<Prognos> getPrognoses() {
+        return prognoses;
+    }
+    public void setPrognoses(Set<Prognos> prognoses) {
+        this.prognoses = prognoses;
+    }
+
 }

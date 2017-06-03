@@ -7,9 +7,20 @@
         <meta attribute="class-description">
             This class contains the city details.
         </meta>
-        <id name="cityID" type="int" column="CITY_ID">
+        <id name="cityID" type="long" column="CITY_ID">
             <generator class="native"/>
         </id>
         <property name="cityName" column="CITY_NAME" type="string"/>
+
+        <one-to-one name="busPark" class="com.landim.entity.BusPark"
+                    cascade="save-update"></one-to-one>
+
+        <set name="drivers" table="driver"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CITY_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Driver" />
+        </set>
     </class>
 </hibernate-mapping>

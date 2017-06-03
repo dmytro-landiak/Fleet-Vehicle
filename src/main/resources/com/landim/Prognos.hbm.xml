@@ -3,16 +3,16 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.landim.entity.Trip" table="trip">
+    <class name="com.landim.entity.Prognos" table="prognos">
         <meta attribute="class-description">
-            This class contains the trip details.
+            This class contains the forecast details.
         </meta>
-        <id name="tripID" type="long" column="TRIP_ID">
+        <id name="prognosID" type="long" column="PROGNOS_ID">
             <generator class="native"/>
         </id>
         <property name="day" column="DAY" type="string"/>
         <property name="time" column="TIME" type="string"/>
-        <property name="passengCount" column="PASSENG_COUNT" type="int"/>
+        <property name="prognosCount" column="PROGNOS_COUNT" type="int"/>
 
         <many-to-one name="route" class="com.landim.entity.Route" fetch="select">
             <column name="ROUTE_ID" not-null="true" />

@@ -7,7 +7,7 @@
     <meta attribute="class-description">
         This class contains the user details.
     </meta>
-    <id name="userID" type="int" column="USER_ID">
+    <id name="userID" type="long" column="USER_ID">
         <generator class="native"/>
     </id>
     <property name="name" column="USER_NAME" type="string"/>
