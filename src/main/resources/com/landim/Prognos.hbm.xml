@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.Prognos" table="prognos">
         <meta attribute="class-description">
@@ -12,10 +12,10 @@
         </id>
         <property name="day" column="DAY" type="string"/>
         <property name="time" column="TIME" type="string"/>
-        <property name="prognosCount" column="PROGNOS_COUNT" type="int"/>
+        <property name="prognosCount" column="PROG_COUNT" type="int"/>
 
         <many-to-one name="route" class="com.landim.entity.Route" fetch="select">
-            <column name="ROUTE_ID" not-null="true" />
+            <column name="route_ROUTE_ID" not-null="true" />
         </many-to-one>
     </class>
 </hibernate-mapping>

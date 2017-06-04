@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.Route" table="route">
         <meta attribute="class-description">
@@ -15,25 +15,25 @@
         <set name="drivers" table="driver"
              inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ROUTE_ID" not-null="true" />
+                <column name="route_ROUTE_ID" not-null="true" />
             </key>
             <one-to-many class="com.landim.entity.Driver" />
-        </set>
-
-        <set name="trips" table="trip"
-             inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ROUTE_ID" not-null="true" />
-            </key>
-            <one-to-many class="com.landim.entity.Trip" />
         </set>
 
         <set name="prognoses" table="prognos"
              inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ROUTE_ID" not-null="true" />
+                <column name="route_ROUTE_ID" not-null="true" />
             </key>
             <one-to-many class="com.landim.entity.Prognos" />
+        </set>
+
+        <set name="trips" table="trip"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="route_ROUTE_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.landim.entity.Trip" />
         </set>
     </class>
 </hibernate-mapping>

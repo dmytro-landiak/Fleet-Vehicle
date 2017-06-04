@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.Bus" table="bus">
         <meta attribute="class-description">
@@ -13,17 +13,17 @@
         <property name="registPlate" column="REGIST_PLATE" type="string"/>
 
         <many-to-one name="busPark" class="com.landim.entity.BusPark" fetch="select">
-            <column name="BUSPARK_ID" not-null="true" />
+            <column name="buspark_BUSPARK_ID" not-null="true" />
         </many-to-one>
 
         <many-to-one name="busType" class="com.landim.entity.BusType" fetch="select">
-            <column name="BUSTYPE_ID" not-null="true" />
+            <column name="bus_type_BUSTYPE_ID" not-null="true" />
         </many-to-one>
 
         <set name="drivers" table="driver"
              inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="BUS_ID" not-null="true" />
+                <column name="bus_BUS_ID" not-null="true" />
             </key>
             <one-to-many class="com.landim.entity.Driver" />
         </set>

@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "BUSPARK_BUS_TYPE")
 @AssociationOverrides({
-        @AssociationOverride(name = "primaryKey.buspark",
-                joinColumns = @JoinColumn(name = "BUSPARK_ID")),
-        @AssociationOverride(name = "primaryKey.bus_type",
-                joinColumns = @JoinColumn(name = "BUSTYPE_ID")) })
+        @AssociationOverride(name = "primaryKey.busPark",
+                joinColumns = @JoinColumn(name = "buspark_BUSPARK_ID")),
+        @AssociationOverride(name = "primaryKey.busType",
+                joinColumns = @JoinColumn(name = "bus_type_BUSTYPE_ID")) })
 public class BusParkBusType implements Serializable {
     private static final long serialVersionUID = 1L;
 

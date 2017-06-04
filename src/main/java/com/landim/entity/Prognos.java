@@ -72,7 +72,7 @@ public class Prognos implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ROUTE_ID")
+    @JoinColumn(name = "route_ROUTE_ID")
     public Route getRoute() { return route; }
 
     public void setRoute(Route route) {

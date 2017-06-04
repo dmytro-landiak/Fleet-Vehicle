@@ -1,5 +1,6 @@
 package com.landim.crud;
 
+import com.landim.entity.Route;
 import com.landim.persistence.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,8 +19,7 @@ public class EnterPoint {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-        CrudBusType busType = new CrudBusType();
-        busType.deleteBusType(session, 1);
+
 
         tx.commit();
         session.close();

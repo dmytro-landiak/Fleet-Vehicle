@@ -64,14 +64,14 @@ public class Bus implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "BUSPARK_ID")
+    @JoinColumn(name = "buspark_BUSPARK_ID")
     public BusPark getBusPark() { return busPark; }
     public void setBusPark(BusPark busPark) {
         this.busPark = busPark;
     }
 
     @ManyToOne
-    @JoinColumn(name = "BUSTYPE_ID")
+    @JoinColumn(name = "bus_type_BUSTYPE_ID")
     public BusType getBusType() { return busType; }
     public void setBusType(BusType busType) {
         this.busType = busType;

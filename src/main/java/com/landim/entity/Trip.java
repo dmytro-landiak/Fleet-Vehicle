@@ -72,7 +72,6 @@ public class Trip implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ROUTE_ID")
     public Route getRoute() { return route; }
 
     public void setRoute(Route route) {

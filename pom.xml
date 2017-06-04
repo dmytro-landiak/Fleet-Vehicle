@@ -8,7 +8,6 @@
     <artifactId>ProjectATP</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>

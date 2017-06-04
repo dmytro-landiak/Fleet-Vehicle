@@ -1,15 +1,15 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.BusParkBusType" table="buspark_bus_type">
         <meta attribute="class-description">
             This class contains the bus park _ bus type details.
         </meta>
         <composite-id name="primaryKey" class="com.landim.entity.BusParkBusType">
-            <key-many-to-one name="busPark" class="com.landim.entity.BusPark" column="BUSPARK_ID" />
-            <key-many-to-one name="busType" class="com.landim.entity.BusType" column="BUSTYPE_ID" />
+            <key-many-to-one name="busPark" class="com.landim.entity.BusPark" column="buspark_BUSPARK_ID" />
+            <key-many-to-one name="busType" class="com.landim.entity.BusType" column="bus_type_BUSTYPE_ID" />
         </composite-id>
 
         <property name="count" type="int" column="COUNT" />

@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.Trip" table="trip">
         <meta attribute="class-description">
@@ -14,8 +14,7 @@
         <property name="time" column="TIME" type="string"/>
         <property name="passengCount" column="PASSENG_COUNT" type="int"/>
 
-        <many-to-one name="route" class="com.landim.entity.Route" fetch="select">
-            <column name="ROUTE_ID" not-null="true" />
-        </many-to-one>
+        <many-to-one name="route" column="route_ROUTE_ID"
+                     class="com.landim.entity.Route" not-null="true"/>
     </class>
 </hibernate-mapping>

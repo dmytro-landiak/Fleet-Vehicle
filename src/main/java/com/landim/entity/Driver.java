@@ -65,7 +65,7 @@ public class Driver implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CITY_ID")
+    @JoinColumn(name = "city_CITY_ID")
     public City getCity() { return city; }
 
     public void setCity(City city) {
@@ -73,7 +73,7 @@ public class Driver implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "BUS_ID")
+    @JoinColumn(name = "bus_BUS_ID")
     public Bus getBus() { return bus; }
 
     public void setBus(Bus bus) {
@@ -81,7 +81,7 @@ public class Driver implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ROUTE_ID")
+    @JoinColumn(name = "route_ROUTE_ID")
     public Route getRoute() { return route; }
 
     public void setRoute(Route route) {

@@ -20,70 +20,42 @@ public class Forecaster
     private Forecaster()
     {
     }
-    
-    /**
-     * Obtains the best forecasting model for the given DataSet. There is
-     * some intelligence built into this method to help it determine which
-     * forecasting model is best suited to the data. In particular, it will
-     * try applying various forecasting models, using different combinations
-     * of independent variables and select the one with the least Sum of
-     * Absolute Errors (SAE); i.e. the most accurate one based on historical
-     * data.
-     * @param dataSet a set of observations on which the given model should be
-     *        based.
-     * @return the best ForecastingModel for the given data set.
-     */
+
     public static ForecastingModel getBestForecast( DataSet dataSet )
     {
         return getBestForecast( dataSet, EvaluationCriteria.BLEND );
     }
-    
-    /**
-     * Obtains the best forecasting model for the given DataSet. To determine
-     * which model is best the specified EvaluationCriteria is used - this
-     * includes options to use bias, mean absolute deviation (MAD), mean
-     * absolute percentage error (MAPE), mean squared error (MSE) and more. For
-     * a complete list refer to the final static members defined in the
-     * EvaluationCriteria class.
-     * @param dataSet a set of observations on which the given model should be
-     *        based.
-     * @param evalMethod specifies how to determine the "best" model; using
-     *        which EvaluationCriteria.
-     * @return the best ForecastingModel for the given data set.
-     * @see EvaluationCriteria
-     * @since 0.5
-     */
+
     public static ForecastingModel getBestForecast( DataSet dataSet, EvaluationCriteria evalMethod )
     {
         String independentVariable[] = dataSet.getIndependentVariables();
         ForecastingModel bestModel = null;
         
         // Try single variable models
-        for ( int i=0; i<independentVariable.length; i++ )
-            {
-                ForecastingModel model;
-                
-                // Try the Regression Model
-                model = new RegressionModel( independentVariable[i] );
-                model.init( dataSet );
-                if ( betterThan( model, bestModel, evalMethod ) )
-                    bestModel = model;
-                
-                // Try the Polynomial Regression Model
-                // Note: if order is about the same as dataSet.size() then
-                //  we'll get a good/great fit, but highly variable - and
-                //  unreliable - forecasts. We "guess" at a reasonable order
-                //  for the polynomial curve based on the number of
-                //  observations.
-                int order = 10;
-                if ( dataSet.size() < order*order )
-                    order = (int)(Math.sqrt(dataSet.size()))-1;
-                model = new PolynomialRegressionModel( independentVariable[i],
-                                                       order );
-                model.init( dataSet );
-                if ( betterThan( model, bestModel, evalMethod ) )
-                    bestModel = model;
-            }
+        for (String anIndependentVariable1 : independentVariable) {
+            ForecastingModel model;
+
+            // Try the Regression Model
+            model = new RegressionModel(anIndependentVariable1);
+            model.init(dataSet);
+            if (betterThan(model, bestModel, evalMethod))
+                bestModel = model;
+
+            // Try the Polynomial Regression Model
+            // Note: if order is about the same as dataSet.size() then
+            //  we'll get a good/great fit, but highly variable - and
+            //  unreliable - forecasts. We "guess" at a reasonable order
+            //  for the polynomial curve based on the number of
+            //  observations.
+            int order = 10;
+            if (dataSet.size() < order * order)
+                order = (int) (Math.sqrt(dataSet.size())) - 1;
+            model = new PolynomialRegressionModel(anIndependentVariable1,
+                    order);
+            model.init(dataSet);
+            if (betterThan(model, bestModel, evalMethod))
+                bestModel = model;
+        }
         
         
         // Try multiple variable models
@@ -91,8 +63,7 @@ public class Forecaster
         // Create a list of available variables
         ArrayList<String> availableVariables
             = new ArrayList<String>(independentVariable.length);
-        for ( int i=0; i<independentVariable.length; i++ )
-            availableVariables.add( independentVariable[i] );
+        for (String anIndependentVariable : independentVariable) availableVariables.add(anIndependentVariable);
         
         // Create a list of variables to use - initially empty
         ArrayList<String> bestVariables = new ArrayList<String>(independentVariable.length);
@@ -109,30 +80,25 @@ public class Forecaster
                 String bestAvailVariable = null;
                 
                 // For each available variable
-                Iterator<String> it = availableVariables.iterator();
-                while ( it.hasNext() )
-                    {
-                        // Get current variable
-                        String currentVar = it.next();
-                        
-                        // Add variable to list to use for regression
-                        workingList[count] = currentVar;
-                        
-                        // Do multiple variable linear regression
-                        ForecastingModel model
-                            = new MultipleLinearRegressionModel( workingList );
-                        model.init( dataSet );
-                        
-                        //  If best so far, then save best variable
-                        if ( betterThan( model, bestModel, evalMethod ) )
-                            {
-                                bestModel = model;
-                                bestAvailVariable = currentVar;
-                            }
-                        
-                        // Remove the current variable from the working list
-                        workingList[count] = null;
+                for (String currentVar : availableVariables) {
+                    // Get current variable
+                    // Add variable to list to use for regression
+                    workingList[count] = currentVar;
+
+                    // Do multiple variable linear regression
+                    ForecastingModel model
+                            = new MultipleLinearRegressionModel(workingList);
+                    model.init(dataSet);
+
+                    //  If best so far, then save best variable
+                    if (betterThan(model, bestModel, evalMethod)) {
+                        bestModel = model;
+                        bestAvailVariable = currentVar;
                     }
+
+                    // Remove the current variable from the working list
+                    workingList[count] = null;
+                }
                 
                 // If no better model could be found (by adding another
                 //     variable), then we're done
@@ -191,36 +157,7 @@ public class Forecaster
         
         return bestModel;
     }
-    
-    /**
-     * A helper method to determine, based on the existing evaluation criteria,
-     * whether one model is "better than" a second model. This is done using
-     * the evaluation criteria exposed by each model, as defined in the
-     * ForecastingModel interface.
-     *
-     * <p>Generally, model2 should be the model that you expect to be worse. It
-     * can also be <code>null</code> if no model2 has been selected. model1
-     * cannot be <code>null</code>. If model2 is <code>null</code>, then
-     * betterThan will return true on the assumption that some model, any
-     * model, is better than no model.
-     *
-     * <p>The determination of which model is "best" is definitely subjective
-     * when the two models are close. The approach implemented here is to
-     * consider all current evaluation criteria (which admittedly are not
-     * independent of each other), and if more of the criteria are in favor of
-     * one model, then betterThan will return true.
-     *
-     * <p>It is expected that this implementation may change over time, so do
-     * not depend on the approach described here. Rather just consider that
-     * this method will implement a reasonable comparison of two models.
-     * @param model1 the first model to compare.
-     * @param model2 the second model to compare. If model1 is determined to
-     *        be "better than" model2, then true is returned. model2 can be
-     *        <code>null</code> representing the absence of a model.
-     * @param evalMethod specifies how to determine the "best" model; using
-     *        which EvaluationCriteria.
-     * @return true if model1 is "better than" model2; otherwise false.
-     */
+
     private static boolean betterThan( ForecastingModel model1,
                                        ForecastingModel model2,
                                        EvaluationCriteria evalMethod )

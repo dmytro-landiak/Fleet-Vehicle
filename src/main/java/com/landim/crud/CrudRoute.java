@@ -15,13 +15,14 @@ public class CrudRoute {
         factory = new Configuration().configure().buildSessionFactory();
     }
 
-    public Long addRoute(String routeName){
+    public Route addRoute(String routeName){
         Session session = factory.openSession();
         Transaction tx = null;
         Long routeID = null;
+        Route route = null;
         try{
             tx = session.beginTransaction();
-            Route route = new Route(routeName);
+            route = new Route(routeName);
             routeID = (Long) session.save(route);
             tx.commit();
         }catch (HibernateException e) {
@@ -30,7 +31,7 @@ public class CrudRoute {
         }finally {
             session.close();
         }
-        return routeID;
+        return route;
     }
     public void searchRoute(Session session){
         Query query = session.createQuery("from Route where routeName = ''");

@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.Driver" table="driver">
         <meta attribute="class-description">
@@ -14,15 +14,15 @@
         <property name="phone" column="PHONE" type="string"/>
 
         <many-to-one name="city" class="com.landim.entity.City" fetch="select">
-            <column name="CITY_ID" not-null="true" />
+            <column name="city_CITY_ID" not-null="true" />
         </many-to-one>
 
         <many-to-one name="bus" class="com.landim.entity.Bus" fetch="select">
-            <column name="BUS_ID" not-null="true" />
+            <column name="bus_BUS_ID" not-null="true" />
         </many-to-one>
 
         <many-to-one name="route" class="com.landim.entity.Route" fetch="select">
-            <column name="ROUTE_ID" not-null="true" />
+            <column name="route_ROUTE_ID" not-null="true" />
         </many-to-one>
 
     </class>

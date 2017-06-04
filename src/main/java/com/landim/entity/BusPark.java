@@ -65,7 +65,7 @@ public class BusPark implements Serializable {
         this.city = city;
     }
 
-    @OneToMany(mappedBy = "buspark", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "busPark", cascade = CascadeType.ALL)
     public Set<Bus> getBuses() {
         return buses;
     }
@@ -73,7 +73,7 @@ public class BusPark implements Serializable {
         this.buses = buses;
     }
 
-    @OneToMany(mappedBy = "primaryKey.buspark",
+    @OneToMany(mappedBy = "primaryKey.busPark",
             cascade = CascadeType.ALL)
     public Set<BusParkBusType> getBusParkBusTypes() {
         return busParkBusTypes;

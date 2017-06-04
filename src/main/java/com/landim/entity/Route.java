@@ -29,7 +29,6 @@ public class Route implements Serializable {
     }
 
     @Id
-    @Column(name = "ROUTE_ID")
     @GeneratedValue
     public long getRouteID() {
         return routeID;

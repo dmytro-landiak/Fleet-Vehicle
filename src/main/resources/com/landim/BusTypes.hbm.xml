@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.landim.entity.BusType" table="bus_type">
         <meta attribute="class-description">
@@ -15,7 +15,7 @@
         <set name="buses" table="bus"
              inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="BUSTYPE_ID" not-null="true" />
+                <column name="bus_type_BUSTYPE_ID" not-null="true" />
             </key>
             <one-to-many class="com.landim.entity.Bus" />
         </set>
