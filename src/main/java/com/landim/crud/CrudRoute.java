@@ -33,13 +33,16 @@ public class CrudRoute {
         }
         return route;
     }
-    public void searchRoute(Session session){
-        Query query = session.createQuery("from Route where routeName = ''");
+    public Route searchRoute(Session session, String routeName){
+        Query query = session.createQuery("from Route where routeName = :route_name");
+        query.setParameter("route_name", routeName);
         List<Route> listRoutes = query.list();
-
+        Route route = null;
         for (Route aRoute : listRoutes) {
+            route = aRoute;
             System.out.println(aRoute.getRouteName());
         }
+        return route;
     }
     public void listRoutes(Session session ){
         Query query = session.createQuery("from Route");
